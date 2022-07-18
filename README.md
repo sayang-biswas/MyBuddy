@@ -1,0 +1,2 @@
+# MyBuddy
+Desktop companion webapp
