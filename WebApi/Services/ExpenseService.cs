@@ -24,6 +24,12 @@ namespace MyBuddy.Services
                 CreatedTime = DateTime.Now,
                 CreatedBy = "Sayangdeep Biswas"
             });
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<MstExpenseCategory>> GetExpenseCategoryAsync()
+        {
+            return await _dbContext.MstExpenseCategories.ToListAsync();
         }
 
         public async Task<List<TranExpensesList>> GetExpensesAsync()

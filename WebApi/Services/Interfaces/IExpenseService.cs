@@ -7,5 +7,6 @@ namespace MyBuddy.Services.Interfaces
     {
         Task<List<TranExpensesList>> GetExpensesAsync();
         Task AddExpenseAsync(AddExpense expense);
+        Task<List<MstExpenseCategory>> GetExpenseCategoryAsync();
     }
 }

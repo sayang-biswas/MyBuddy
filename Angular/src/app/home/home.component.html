@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-title>Apps</mat-card-title>
+
+    <mat-grid-list cols="4" gutterSize="10px" rowHeight="100px">
+        <mat-grid-tile>
+            <div class="app-container" (click)="onAppClick('qlinks')">
+                Qlinks
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="app-container" (click)="onAppClick('expense')">
+                Expense
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+ 

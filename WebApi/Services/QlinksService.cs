@@ -29,9 +29,34 @@ namespace MyBuddy.Services
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<MstQlink>> GetQlinksAsync()
+        public async Task<List<QlinksList>> GetQlinksAsync()
         {
-            return await _dbContext.MstQlinks.ToListAsync();
+            var groupedQlinks = await _dbContext.MstQlinksCategories
+                .Select(x => new QlinksList
+                {
+                    CategoryId = x.Id,
+                    CategoryName = x.Name,
+                    CategoryDescription = x.Description,
+                    Qlinks = new List<Qlink>()
+                }).ToListAsync();
+
+            foreach (var groupedQlink in groupedQlinks)
+            {
+                groupedQlink.Qlinks.AddRange(await _dbContext.MstQlinks
+                    .Where(x => x.MstQlinksCategoryId == groupedQlink.CategoryId)
+                    .Select(y => new Qlink
+                    {
+                        Name = y.Name,
+                        Url = y.Url
+                    }).ToListAsync());
+            }
+
+            return groupedQlinks;
+        }
+
+        public async Task<List<MstQlinksCategory>> GetQlinksCategoriesAsync()
+        {
+            return await _dbContext.MstQlinksCategories.ToListAsync();
         }
     }
 }

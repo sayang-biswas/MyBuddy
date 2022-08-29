@@ -26,6 +26,14 @@ namespace MyBuddy.Controllers
             var result = await _expenseService.GetExpensesAsync();
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetExpenseCategory()
+        {
+            var result = await _expenseService.GetExpenseCategoryAsync();
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddExpense(AddExpense item)
         {

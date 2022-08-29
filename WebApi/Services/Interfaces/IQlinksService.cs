@@ -5,7 +5,8 @@ namespace MyBuddy.Services.Interfaces
 {
     public interface IQlinksService
     {
-        Task<List<MstQlink>> GetQlinksAsync();
+        Task<List<QlinksList>> GetQlinksAsync();
         Task AddQlinkAsync(AddQlink item);
+        Task<List<MstQlinksCategory>> GetQlinksCategoriesAsync();
     }
 }

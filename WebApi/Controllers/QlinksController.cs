@@ -26,6 +26,14 @@ namespace MyBuddy.Controllers
             var result = await _qlinksService.GetQlinksAsync();
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetQlinksCategory()
+        {
+            var result = await _qlinksService.GetQlinksCategoriesAsync();
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddQlink(AddQlink item)
         {
