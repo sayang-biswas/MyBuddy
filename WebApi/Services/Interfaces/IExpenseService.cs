@@ -5,7 +5,7 @@ namespace MyBuddy.Services.Interfaces
 {
     public interface IExpenseService
     {
-        Task<List<TranExpensesList>> GetExpensesAsync();
+        Task<List<Expense>> GetExpensesAsync();
         Task AddExpenseAsync(AddExpense expense);
         Task<List<MstExpenseCategory>> GetExpenseCategoryAsync();
     }

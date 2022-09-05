@@ -32,10 +32,18 @@ namespace MyBuddy.Services
             return await _dbContext.MstExpenseCategories.ToListAsync();
         }
 
-        public async Task<List<TranExpensesList>> GetExpensesAsync()
+        public async Task<List<Expense>> GetExpensesAsync()
         {
-            return await _dbContext.TranExpensesLists
-                .ToListAsync();
+            return await (from tel in _dbContext.TranExpensesLists
+                          join mec in _dbContext.MstExpenseCategories on tel.Category equals mec.Id
+                          select new Expense
+                          {
+                              category = mec.Name,
+                              description = tel.Description,
+                              price = tel.Price,
+                              createdTime = tel.CreatedTime ?? default
+                          })
+                         .ToListAsync();
         }
     }
 }
