@@ -5,6 +5,8 @@
   <small>Hello, Sayangdeep</small>
 </mat-toolbar>
 
+<mat-progress-bar mode="indeterminate" *ngIf="progressBarService.visibility | async"></mat-progress-bar>
+
 <div class="router-body">
   <router-outlet></router-outlet>
 </div>

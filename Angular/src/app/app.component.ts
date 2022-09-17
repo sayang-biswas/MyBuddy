@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProgressBarService } from './common/service/progress-bar.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private readonly _router : Router) { }
+  constructor(private readonly _router : Router,
+    public progressBarService: ProgressBarService ) { }
 
   title = 'MyBuddy';
 

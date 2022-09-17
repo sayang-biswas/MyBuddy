@@ -16,6 +16,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
  
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatDialogModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatProgressBarModule
   ],
   exports: [
     MatSidenavModule,
@@ -54,7 +56,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatDialogModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule {}

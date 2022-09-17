@@ -8,12 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QlinksComponent } from './qlinks/qlinks.component';
 import { HomeComponent } from './home/home.component';
 import { QlinksService } from './qlinks/service/qlinks.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateQlinksComponent } from './qlinks/create-qlinks/create-qlinks.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExpenseComponent } from './expense/expense.component';
 import { CreateExpenseComponent } from './expense/create-expense/create-expense.component';
 import { ExpenseService } from './expense/services/expense.service';
+import { GlobalHttpErrorHandlerInterceptor } from './common/interceptors/global-http-error-handler.interceptor';
+import { CustomErrorDialogComponent } from './common/dialog/custom-error-dialog/custom-error-dialog.component';
+import { HttpProgressBarInterceptor } from './common/interceptors/http-progress-bar.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { ExpenseService } from './expense/services/expense.service';
     HomeComponent,
     CreateQlinksComponent,
     ExpenseComponent,
-    CreateExpenseComponent
+    CreateExpenseComponent,
+    CustomErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,17 @@ import { ExpenseService } from './expense/services/expense.service';
   ],
   providers: [
     QlinksService,
-    ExpenseService
+    ExpenseService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpProgressBarInterceptor,
+      multi: true
+    },  
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalHttpErrorHandlerInterceptor,
+      multi: true
+    }   
   ],
   bootstrap: [AppComponent]
 })
