@@ -17,6 +17,7 @@ import { ExpenseService } from './expense/services/expense.service';
 import { GlobalHttpErrorHandlerInterceptor } from './common/interceptors/global-http-error-handler.interceptor';
 import { CustomErrorDialogComponent } from './common/dialog/custom-error-dialog/custom-error-dialog.component';
 import { HttpProgressBarInterceptor } from './common/interceptors/http-progress-bar.interceptor';
+import { ExpensePieChartComponent } from './expense/expense-pie-chart/expense-pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpProgressBarInterceptor } from './common/interceptors/http-progress-
     CreateQlinksComponent,
     ExpenseComponent,
     CreateExpenseComponent,
-    CustomErrorDialogComponent
+    CustomErrorDialogComponent,
+    ExpensePieChartComponent
   ],
   imports: [
     BrowserModule,

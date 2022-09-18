@@ -1,38 +1,58 @@
 <div class="button-section">
-    <button mat-raised-button color="primary" (click)="onAddExpenseClick()"><mat-icon>add</mat-icon> Add Expense</button>
+  <button mat-raised-button color="primary" (click)="onAddExpenseClick()">
+    <mat-icon>add</mat-icon> Add Expense
+  </button>
 </div>
 
 <mat-card>
-    <mat-card-header>
-      <mat-card-title>Expense List</mat-card-title>
-    </mat-card-header>
-  
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Category</th>
-        <td mat-cell *matCellDef="let element">{{ element.category }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Description</th>
-        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Price(Rs.)</th>
-        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="createdTime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Created Time</th>
-        <td mat-cell *matCellDef="let element">{{ element.createdTime | date:'medium'}}</td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-    <ng-container *ngIf="!isDataSourceNotActive()">
-      <div>No Expense Found.</div>
+  <mat-card-header>
+    <mat-card-title>Expense List</mat-card-title>
+  </mat-card-header>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Category
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.category }}</td>
     </ng-container>
-    <mat-paginator [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
-  </mat-card>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Description
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Price(Rs.)
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Created Time
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.createdTime | date: "medium" }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <ng-container *ngIf="!isDataSourceNotActive()">
+    <div>No Expense Found.</div>
+  </ng-container>
+  <mat-paginator [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Expense Graph</mat-card-title>
+  </mat-card-header>
+
+  <app-expense-pie-chart></app-expense-pie-chart>
+</mat-card>
