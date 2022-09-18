@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add Link</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" ngNativeValidate>
+    <mat-grid-list cols="1" rowHeight="60px" gutterSize="10px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="name" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <input matInput placeholder="Url" formControlName="url" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category" name="category" required>
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category.id"
+            >
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">
+        <mat-icon>save</mat-icon>Save
+      </button>
+      <button mat-stroked-button color="primary" type="button" (click)="onCancelClick()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>
