@@ -61,6 +61,11 @@ export class ExpenseComponent implements OnInit {
     return true;
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   private setDefaultSorting() {
     const defaultSorting: Sort = { active: "createdTime", direction: "desc" };
     this.sort.active = defaultSorting.active;

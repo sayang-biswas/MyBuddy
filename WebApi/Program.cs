@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(
        "MyBuddyPolicy",
-       builder => builder.WithOrigins(new[] { "http://localhost:7872", "http://localhost:4200" })
+       builder => builder.WithOrigins(new[] { "http://localhost:7872", "http://localhost:4200", "http://localhost" })
        .SetIsOriginAllowedToAllowWildcardSubdomains()
        .AllowAnyMethod()
        .AllowAnyHeader()

@@ -6,6 +6,11 @@
     <mat-card-header>
       <mat-card-title>Expense List</mat-card-title>
     </mat-card-header>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Enter text to filter." #input>
+    </mat-form-field>
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
       <ng-container matColumnDef="category">
