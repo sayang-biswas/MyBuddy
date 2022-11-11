@@ -5,6 +5,14 @@
   .router-body {
       padding: 20px;
       background-color:cyan;
-      height: 100%;
+      height: auto;
+      min-height: 100%;
       margin: 0;
+  }
+
+  .footer {
+      background-color: #673ab7;
+      text-align: center;
+      color: white;
+      font: 500 15px/30px Roboto, "Helvetica Neue", sans-serif;
   }
