@@ -40,5 +40,12 @@ namespace MyBuddy.Controllers
             await _expenseService.AddExpenseAsync(item);
             return Ok();
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _expenseService.DeleteExpenseAsync(id);
+            return Ok();
+        }
     }
 }

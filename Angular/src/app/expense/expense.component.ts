@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CreateExpenseComponent } from './create-expense/create-expense.component';
@@ -18,7 +19,8 @@ export class ExpenseComponent implements OnInit {
     'category',
     'description',
     'createdTime',
-    'price'
+    'price',
+    'actions'
   ];
 
   dataSource: MatTableDataSource<Expense>;
@@ -28,8 +30,9 @@ export class ExpenseComponent implements OnInit {
 
   constructor(
     private readonly _dialog: MatDialog,
-    private readonly _expenseService: ExpenseService
-  ) {}
+    private readonly _expenseService: ExpenseService,
+    private readonly snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit(): void {
     this._expenseService.getExpenses().subscribe((data) => {
@@ -38,11 +41,12 @@ export class ExpenseComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
     this.setDefaultSorting();
+    this.getExpenseByCategory();
   }
 
   onAddExpenseClick() {
     const dialogRef = this._dialog.open(CreateExpenseComponent, {
-      width: '400px',
+      width: '800px',
       data: '',
     });
 
@@ -64,6 +68,23 @@ export class ExpenseComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getExpenseByCategory() {
+    
+  }
+
+  onDeleteClick(id: string) {
+    this._expenseService.delete(id).subscribe(result => {
+      this.snackBar.open("Expense deleted successfully.", "OK", {
+        duration: 2000
+    });
+    this.ngOnInit();
+    });
+  }
+
+  onEditClick(id: string) {
+    alert("Not implemented....too lazy.");
   }
 
   private setDefaultSorting() {
