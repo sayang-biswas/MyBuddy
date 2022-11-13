@@ -36,6 +36,7 @@ export class CreateExpenseComponent implements OnInit {
       description: [null, [Validators.required]],
       category: [null, [Validators.required]],
       price: [null, [Validators.required]],
+      expenseDate: [new Date, [Validators.required]]
     });
   }
 
@@ -43,12 +44,14 @@ export class CreateExpenseComponent implements OnInit {
     this._dialogRef.close();
   }
 
-  onSubmit(post: any) {
+  onSubmit(post: AddExpense) {
     console.log(post);
     const expenseObj: AddExpense = {
       description: post.description,
       category: post.category,
-      price: post.price
+      price: post.price,
+      expenseDate: post.expenseDate
+
     }
     this._expenseService.addExpense(expenseObj).subscribe(() => {
       this.snackBar.open("Expense added.", "OK", {

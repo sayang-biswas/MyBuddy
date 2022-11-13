@@ -8,7 +8,7 @@
        <mat-card-subtitle>{{ container.categoryDescription }}</mat-card-subtitle>
        <mat-card-actions>
           <ng-container *ngFor="let l of container.qlinks">
-            <a mat-raised-button color ="primary" href="{{ l.url }}" target="_blank">{{ l.name }}</a>
+            <a mat-raised-button class="qlinks-button" color="primary" href="{{ l.url }}" target="_blank">{{ l.name }}</a>
           </ng-container>
        </mat-card-actions>
     </mat-card>

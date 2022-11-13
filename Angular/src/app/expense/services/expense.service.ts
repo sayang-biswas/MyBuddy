@@ -33,4 +33,8 @@ export class ExpenseService {
     options
   );
 }
+
+delete(id: string): Observable<any> {
+  return this.http.delete<any>(`http://localhost:5242/api/Expense/Delete?id=${id}`);
+}
 }

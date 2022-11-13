@@ -21,9 +21,18 @@ namespace MyBuddy.Services
                 Description = expense.Description,
                 Category = expense.category,
                 Price = expense.Price,
-                CreatedTime = DateTime.Now,
+                CreatedTime = expense.expenseDate.ToLocalTime(),
                 CreatedBy = "Sayangdeep Biswas"
             });
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteExpenseAsync(string expenseId)
+        {
+            var item = await _dbContext.TranExpensesLists.FirstOrDefaultAsync(x => x.Id == expenseId);
+#pragma warning disable CS8604 // Possible null reference argument.
+            _dbContext.TranExpensesLists.RemoveRange(item);
+#pragma warning restore CS8604 // Possible null reference argument.
             await _dbContext.SaveChangesAsync();
         }
 
@@ -38,6 +47,7 @@ namespace MyBuddy.Services
                           join mec in _dbContext.MstExpenseCategories on tel.Category equals mec.Id
                           select new Expense
                           {
+                              id = tel.Id,
                               category = mec.Name,
                               description = tel.Description,
                               price = tel.Price,
