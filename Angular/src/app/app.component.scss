@@ -4,10 +4,8 @@
 
   .router-body {
       padding: 20px;
-      background-color:cyan;
-      height: auto;
-      min-height: 100%;
-      margin: 0;
+      background-color:darkslategray;
+      height: calc(100vh - 85px);
   }
 
   .footer {
@@ -15,4 +13,12 @@
       text-align: center;
       color: white;
       font: 500 15px/30px Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  mat-sidenav-container {
+      height: calc(100vh - 64px);
+  }
+
+  mat-sidenav {
+      width: 250px;
   }

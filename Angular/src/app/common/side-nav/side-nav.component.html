@@ -1,0 +1,13 @@
+<mat-nav-list>
+  <ng-container *ngFor="let item of sideNavItem">
+    <mat-toolbar>{{ item.navItem }}</mat-toolbar>
+
+    <ng-container *ngFor="let list of item.navList">
+      <mat-list-item [routerLink]="list.href">
+        <mat-icon>{{ list.icon }}</mat-icon>
+        {{ list.name }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </ng-container>
+</mat-nav-list>
