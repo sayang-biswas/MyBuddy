@@ -34,6 +34,13 @@ namespace MyBuddy.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetExpenseStatistics()
+        {
+            await _expenseService.GetExpenseStatisticsAsync();
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddExpense(AddExpense item)
         {
