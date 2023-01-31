@@ -18,6 +18,9 @@ import { GlobalHttpErrorHandlerInterceptor } from './common/interceptors/global-
 import { CustomErrorDialogComponent } from './common/dialog/custom-error-dialog/custom-error-dialog.component';
 import { HttpProgressBarInterceptor } from './common/interceptors/http-progress-bar.interceptor';
 import { SideNavComponent } from './common/side-nav/side-nav.component';
+import { ExpenseStatisticsComponent } from './expense/expense-statistics/expense-statistics.component';
+import { ToolbarMenuComponent } from './common/toolbar-menu/toolbar-menu.component';
+import { AboutComponent } from './common/toolbar-menu/dialog/about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { SideNavComponent } from './common/side-nav/side-nav.component';
     ExpenseComponent,
     CreateExpenseComponent,
     CustomErrorDialogComponent,
-    SideNavComponent
+    SideNavComponent,
+    ExpenseStatisticsComponent,
+    ToolbarMenuComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

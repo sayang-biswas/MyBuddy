@@ -57,11 +57,31 @@ namespace MyBuddy.Services
                          .ToListAsync();
         }
 
-        public async Task GetExpenseStatisticsAsync()
+        public async Task<List<ExpenseStatistics>> GetExpenseStatisticsAsync()
         {
+            var result = new List<ExpenseStatistics>();
             var expense = await GetExpensesAsync();
             var groupedExpense = expense
                 .GroupBy(grp => grp.categoryId);
+
+            foreach(var expenseItem in groupedExpense)
+            {
+                var category = await _dbContext
+                    .MstExpenseCategories
+                    .FirstOrDefaultAsync(x => x.Id == expenseItem.Key);
+
+                if (category != null)
+                {
+                    result.Add(new ExpenseStatistics
+                    {
+                        categoryId = category.Id,
+                        categoryName = category.Name,
+                        sum = expenseItem.Sum(s => s.price)
+                    });
+                }                
+            }
+
+            return result;
         }
     }
 }

@@ -5,7 +5,7 @@ import { AddExpense } from '../models/add-expense.models';
 
 @Injectable()
 export class ExpenseService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getExpenses(): Observable<any> {
     return this.http.get('http://localhost:5242/api/Expense/GetExpenses');
@@ -19,22 +19,26 @@ export class ExpenseService {
 
   addExpense(qlinksObj: AddExpense): Observable<any> {
     const httpHeaders = new HttpHeaders(
-        {
-            "Content-Type": "application/json"
-        }
+      {
+        "Content-Type": "application/json"
+      }
     );
 
     const options = {
-        headers: httpHeaders
+      headers: httpHeaders
     };
-  return this.http.post<AddExpense>(
-    'http://localhost:5242/api/Expense/AddExpense',
-    JSON.stringify(qlinksObj),
-    options
-  );
-}
+    return this.http.post<AddExpense>(
+      'http://localhost:5242/api/Expense/AddExpense',
+      JSON.stringify(qlinksObj),
+      options
+    );
+  }
 
-delete(id: string): Observable<any> {
-  return this.http.delete<any>(`http://localhost:5242/api/Expense/Delete?id=${id}`);
-}
+  delete(id: string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:5242/api/Expense/Delete?id=${id}`);
+  }
+
+  getExpenseStatistics(): Observable<any> {
+    return this.http.get('http://localhost:5242/api/Expense/GetExpenseStatistics');
+  }
 }

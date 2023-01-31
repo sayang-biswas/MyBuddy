@@ -5,18 +5,11 @@
   .router-body {
       padding: 20px;
       background-color:darkslategray;
-      height: calc(100vh - 85px);
-  }
-
-  .footer {
-      background-color: #673ab7;
-      text-align: center;
-      color: white;
-      font: 500 15px/30px Roboto, "Helvetica Neue", sans-serif;
+      height: 150vh;
   }
 
   mat-sidenav-container {
-      height: calc(100vh - 64px);
+      height: 100%;
   }
 
   mat-sidenav {

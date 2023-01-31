@@ -37,8 +37,8 @@ namespace MyBuddy.Controllers
         [HttpGet]
         public async Task<IActionResult> GetExpenseStatistics()
         {
-            await _expenseService.GetExpenseStatisticsAsync();
-            return Ok();
+            var result = await _expenseService.GetExpenseStatisticsAsync();
+            return Ok(result);
         }
 
         [HttpPost]

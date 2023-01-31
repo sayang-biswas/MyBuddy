@@ -1,16 +1,21 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button style="margin-right: 10px;" (click)="onSideNavButtonClick()">
+  <button
+    mat-icon-button
+    style="margin-right: 10px"
+    (click)="onSideNavButtonClick()"
+  >
     <mat-icon>menu</mat-icon>
-  </button> 
+  </button>
   <mat-icon>emoji_people</mat-icon>
-  <span (click)="onTitleClick()">
-    My Buddy
-  </span>
+  <span (click)="onTitleClick()"> My Buddy </span>
   <span class="spacer"></span>
-  <small>Hello, Sayangdeep</small>
+  <app-toolbar-menu></app-toolbar-menu>
 </mat-toolbar>
 
-<mat-progress-bar mode="indeterminate" *ngIf="progressBarService.visibility | async"></mat-progress-bar>
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="progressBarService.visibility | async"
+></mat-progress-bar>
 
 <div>
   <mat-sidenav-container>
@@ -22,9 +27,6 @@
       <div class="router-body">
         <router-outlet></router-outlet>
       </div>
-      <footer class="footer">
-        v1.2 - Introducing dark mode & Side Navigation.
-      </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
