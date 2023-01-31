@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ProgressBarService } from './common/service/progress-bar.service';
 
@@ -11,7 +12,7 @@ export class AppComponent {
   isSideNavOpen: boolean = false;
 
   constructor(private readonly _router : Router,
-    public progressBarService: ProgressBarService ) { }
+    public progressBarService: ProgressBarService) { }
 
   title = 'MyBuddy';
 

@@ -49,11 +49,39 @@ namespace MyBuddy.Services
                           {
                               id = tel.Id,
                               category = mec.Name,
+                              categoryId = mec.Id,
                               description = tel.Description,
                               price = tel.Price,
                               createdTime = tel.CreatedTime ?? default
                           })
                          .ToListAsync();
+        }
+
+        public async Task<List<ExpenseStatistics>> GetExpenseStatisticsAsync()
+        {
+            var result = new List<ExpenseStatistics>();
+            var expense = await GetExpensesAsync();
+            var groupedExpense = expense
+                .GroupBy(grp => grp.categoryId);
+
+            foreach(var expenseItem in groupedExpense)
+            {
+                var category = await _dbContext
+                    .MstExpenseCategories
+                    .FirstOrDefaultAsync(x => x.Id == expenseItem.Key);
+
+                if (category != null)
+                {
+                    result.Add(new ExpenseStatistics
+                    {
+                        categoryId = category.Id,
+                        categoryName = category.Name,
+                        sum = expenseItem.Sum(s => s.price)
+                    });
+                }                
+            }
+
+            return result;
         }
     }
 }

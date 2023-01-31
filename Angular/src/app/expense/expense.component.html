@@ -53,12 +53,11 @@
     <ng-container *ngIf="!isDataSourceNotActive()">
       <div>No Expense Found.</div>
     </ng-container>
-    <mat-paginator [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20, 100]"></mat-paginator>
   </mat-card>
 
-  <!-- <mat-card>
-    <mat-card-header>
-      <mat-card-title>Expense Statistics</mat-card-title>
-      <mat-card-subtitle>Aggregate by category</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card> -->
+  <div class="expense-analysis-container">
+    <div class="width-50">
+      <app-expense-statistics></app-expense-statistics>
+    </div>
+  </div>
